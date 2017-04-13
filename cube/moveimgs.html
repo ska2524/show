@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+
+		<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+		Remove this if you use the .htaccess -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+		<title>rotate</title>
+		<meta name="description" content="" />
+		<meta name="author" content="THINKER" />
+
+		<meta name="viewport" content="width=device-width; initial-scale=1.0" />
+
+		<!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<style>
+
+*{
+	margin:0;
+	padding:0;
+}
+
+#container {
+	
+	margin:100px 400px;
+	width:300px;
+	height:300px;
+	-webkit-perspective: 800px;	
+	border:1px solid #6D84A2;
+}
+
+#container img{
+	width:300px;
+	height:300px;
+}
+
+.page{
+	padding: 0px;
+	display: inline;
+	width:300px;
+	height:300px;
+	-webkit-transform-style: preserve-3d;	
+	-webkit-transition-duration: 1500ms;		
+	-webkit-transform:translateZ(0px) ;	
+	position: absolute;
+
+}
+
+
+.p0 {
+	-webkit-transform:rotateY(0deg) scale(0.2);
+	margin-left: -400px;
+	z-index:1;
+	
+}
+
+.p1 {
+	-webkit-transform:rotateY(30deg) scale(0.5);
+	margin-left:-300px;
+	z-index:2;
+}
+
+.p2 {
+	-webkit-transform:rotateY(60deg) scale(.75);
+	margin-left:-100px;	
+	z-index:3;
+}
+
+.p3 {
+	-webkit-transform:rotateY(120deg) scale(0.75);
+	margin-left:100px;	
+	z-index:3;
+}
+
+.p4 {
+	-webkit-transform:rotateY(150deg) scale(0.5);
+	margin-left:300px;	
+	z-index:2;
+}
+
+.p5 {
+	-webkit-transform:rotateY(180deg) scale(0.2);
+	margin-left:400px;	
+	z-index:1;
+}
+
+
+.controll {
+	margin:0 auto;
+	width: 500px;
+}
+
+#right,#left {
+	margin-right: 200px;
+}
+
+	
+</style>		
+	</head>
+
+	<body>
+		<div>
+			
+<header>
+	<h1>move</h1>
+</header>
+
+<div id="container">
+	<img class="page p0" data-value='0' src="img/class-header-3d.jpg"/>
+	<img class="page p1" data-value='1' src="img/class-header-connectivity.jpg"/>
+	<img class="page p2" data-value='2'  src="img/class-header-css3.jpg"/>
+	<img class="page p3" data-value='3'  src="img/class-header-device.jpg"/>
+	<img class="page p4" data-value='4'  src="img/class-header-multimedia.jpg"/>
+	<img class="page p5" data-value='5' src="img/class-header-offline.jpg"/>		
+</div>
+
+
+<div class="controll">
+	
+	<span id="right"> BBBBBBBBBB </span>
+	<span id="left">  FFFFFFFFFF  </span>	
+
+
+</div>
+
+
+<script src="js/jquery-1.7.1.min.js"></script>		
+<script>
+
+ 
+$(document).ready(function() {
+	
+	$('#left').bind('click', function(event) {
+		
+		$('.page').each(function(index) {
+			var next = $(this).attr("data-value");
+			
+			if(++next >= 6){
+				next -= 6;
+			}
+			console.log(next);
+		  	$(this).attr("class", "page " + "p"+(next));
+		  	$(this).attr("data-value", next);
+		});
+		
+		
+	});
+	
+	
+	$('#right').bind('click', function(event) {
+		
+		$('.page').each(function(index) {
+			
+			var next =  $(this).attr("data-value");
+			
+			if(--next < 0){
+				next += 6;
+			}
+			console.log(next);
+		  	$(this).attr("class", "page " + "p"+(next));
+		  	$(this).attr("data-value", next);
+		});
+		
+		
+	});	
+	
+	
+});
+
+
+</script>
+
+		</div>
+	</body>
+</html>

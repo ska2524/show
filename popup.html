@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<style>
+    .wrapper{
+        width: 100%;
+        height: 600px;
+        background: -webkit-linear-gradient(top, rgba(30,87,153,1) 0%,rgba(125,185,232,0) 100%);
+        position: relative;
+
+    }
+
+    .popup{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        height: 200px;
+        width: 300px;
+        margin-left: -150px;
+        margin-top: -100px;
+        border:1px solid blue;
+        background: -webkit-linear-gradient(top, rgba(234,46,96,1) 0%,rgba(234,46,96,0.39) 61%,rgba(125,185,232,0) 100%);
+
+    }
+
+</style>
+<button id="show">SHOW</button>
+<button id="hide">HIDE</button>
+
+<div class="wrapper">
+    Wrapper
+    <div class="popup" id="popup" display="none" >
+        Popup
+    </div>
+
+</div>
+
+
+
+
+<script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+
+
+
+<script>
+    $(document).ready(function (event) { //이걸 쓰면 DOM요소 끝나고 실행한다.
+        $("#show").click(function (event) {
+            $("#popup").animate({left: '100px'},"slow").show('slow(3000)').animate({left: '1000px'},"slow");
+        });
+
+        $("#hide").click(function (event) {
+
+            $("#popup").animate({left: '-500px'},"slow").hide('slow(3000)');
+
+
+        });
+
+    })
+</script>
+</body>
+
+
+</html>

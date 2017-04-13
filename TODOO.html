@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="outer">
+    <input type="text" name="inputText">
+    <button id="btn">입력</button>
+</div>
+<div class="inner">
+    <ul class="ULC">
+
+
+    </ul>
+
+</div>
+
+<script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+
+<script>
+    $(document).ready(function(){
+
+        var $inputObj = $("input[name='inputText']");
+        var $btnObj = $("#btn");
+        var $ulObj=$(".ULC");
+        var $outerObj = $(".outer");
+        var $innerObj = $(".inner");
+        var $cancle = $(".canc");
+
+        $btnObj.on("click",function (e) {
+
+            var $content = $inputObj.val();
+            console.log($content)
+            $inputObj.val("");
+            $ulObj.append("<li id='li'>"+$content+"<button class = 'canc'> x </button></li>");
+
+        });
+        $ulObj.on("click","li .canc",function(e){
+
+            $(this).parent().remove();
+
+        });
+        $ulObj.on("click","li",function (e) {
+
+            var liText= $(this).text();//this =li
+           $(this).append("<li id='lili'><input id='input' type='text' value="+ liText+"><button id='mod'>수정</button></li>");
+
+
+
+            $("li").on("click",function (e) {
+                e.stopPropagation();
+            });
+            $("#mod").on("click",function (e) {
+
+                var $input = $("#input").val()
+
+                $(this).parent().parent().text($input)
+
+                console.log($(this).parent().parent().text($input))
+
+                var content2 = $(this).parent().remove()
+//                $("#li").text($input)
+
+                $("#li").html();
+
+
+
+
+
+
+
+
+            });
+
+
+
+
+        });
+
+
+
+
+
+
+
+    });
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<button id="fw">FF</button>
+<button id="rw">RW</button>
+<style>
+   .item {position:relative}
+
+</style>
+
+<div>
+    <img class="item" id="h1" src="0.png">
+</div>
+<div>
+    <img class="item" src="0.png">
+</div>
+<div>
+    <img class="item" src="0.png">
+</div>
+<div>
+    <img class="item" src="0.png">
+</div>
+
+
+
+<script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+
+<script>
+
+    $(document).ready(function (e) {
+        $("#fw").on("click", function () {
+            $(".item").animate({left: '500px'},"slow");
+
+
+
+        })
+        $("#rw").on("click", function () {
+
+        })
+
+
+
+    })
+
+
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--<button id="show">SHOW</button>-->
+<!--<button id="hide">HIDE</button>-->
+<!--<img id='sampleImg' src="수지.jpg">-->
+
+
+
+
+
+<script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+
+
+<script>
+    $(document).ready(function (event) { //이걸 쓰면 DOM요소 끝나고 실행한다.
+        $("#show").click(function (event) {
+            $("#sampleImg").show('slow(3000)')
+        });
+
+        $("#hide").click(function (event) {
+
+            $("#sampleImg").hide('slow')
+
+
+        });
+
+    })
+
+</script>
+
+
+<button id="show">SHOW</button>
+<button id="hide">HIDE</button>
+<img id='sampleImg' src="수지.jpg">
+
+</body>
+</html>

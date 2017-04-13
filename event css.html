@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .wrapper{
+        width: 100px;
+        height: auto;
+        background: -webkit-linear-gradient(top, rgba(30,87,153,1) 0%,rgba(125,185,232,0) 100%);
+        position: relative;
+    }
+
+    .todoUL{
+        width: 100px;
+        height: auto;
+        background-color: aqua;
+    }
+
+    .del{
+        margin : 5px;
+        background-color: darkseagreen;
+        padding: 5px;
+    }
+    li{
+        height: 30px;
+        boarder: 1px brown;
+        list-style: circle;
+    }
+
+    .list{
+        display: none;
+    }
+
+.pop{
+    background-color: aqua;
+    width: 100px;
+    height: 100px;
+}
+
+
+
+</style>
+
+<body>
+<!--<button id="btn1">btn1</button>-->
+<!--<button id="btn2">btn2</button>-->
+
+<div class="wrapper">
+    <input type="text" name="todo" >
+    <button id="btn">Save</button>
+</div>
+
+<div class="list">
+
+    <ul class="todoUL">
+
+
+    </ul>
+
+</div>
+
+<div class="pop">
+
+
+
+</div>
+
+<script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+
+
+<script>
+
+    var $input = $( "input[name='todo']" );
+    var $todoUL = $(".todoUL");
+    var $btn = $("#btn");
+    $(document).ready(function (event) {
+        $btn.on("click", function (e) {
+
+            $(".wrapper").animate({left: '100px'}, "slow")
+            var content = $input.val();
+            $input.val("");
+            console.log(content);
+            $(".list").show('slow')
+            $todoUL.append("<li id='li'>" + content + "<span class='del'>x</span></li>")
+
+
+        });
+
+        $todoUL.on("click", "li .del", function (e) { //"" 아직은 dom에 생성되지 않은 것이지만 이벤트가 걸리면받아먹을거다.(하위요소에 걸어주는것이다.)
+            console.log(this);
+            $(this).closest("li").remove();
+
+
+        });
+
+        $todoUL.on("click", "li", function (e) {
+
+
+            var $that = $(this);
+            var content = $that.children().remove().end().text(); //end -> 삭제된 상태의 li로 돌아감
+            console.log(this)
+            $that.animate({left: '100px'}, "slow").show('slow(3000)')
+            $that.html("<input type='text' value='" + content + "'><button>mod</button>")
+            console.log(content)
+
+
+
+
+        })
+
+        $todoUL.on("click", "input, button", function (e) {
+            e.stopPropagation();
+        })
+
+    })
+
+
+
+
+
+
+
+    //    document.querySelector("#btn1").addEventListener("click", function (evnet) {
+    //
+    //        console.dir(evnet);
+    //    })
+    //
+    //    $("#btn2").on("click", function (e) {
+    //        console.dir(e)
+    //    })
+
+
+</script>
+
+
+</body>
+</html>
